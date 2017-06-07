@@ -23,14 +23,14 @@ public class PersonController {
     }
 
     @RequestMapping(value = "/person", method = RequestMethod.POST)
-    public Person insertPerson(@RequestParam Person person) {
+    public Person insertPerson(@RequestBody Person person) {
         personService.insert(person);
         return personService.getPersonByName(person.getName());
     }
 
     @RequestMapping(value = "/person/{id}", method = RequestMethod.PUT)
     public Person updatePersonById(@PathVariable("id") Integer id,
-                                   @RequestParam Person person) {
+                                   @RequestBody Person person) {
         personService.update(person);
         return personService.getPersonById(id);
     }
