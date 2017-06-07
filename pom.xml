@@ -100,6 +100,16 @@
     </dependencies>
 
     <build>
+        <finalName>SpringMVC Template</finalName>
+        <resources>
+            <!-- 将java文件夹中的xml文件作为资源文件，否则容易破坏mybatis的一些xml配置-->
+            <resource>
+                <directory>${basedir}/src/main/java</directory>
+                <excludes>
+                    <exclude>**/*.java</exclude>
+                </excludes>
+            </resource>
+        </resources>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

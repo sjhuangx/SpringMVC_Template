@@ -12,6 +12,10 @@ public class Person {
 
     private String email;
 
+    private String password;
+
+    private Integer isDelete;
+
     public int getId() {
         return id;
     }
@@ -42,5 +46,21 @@ public class Person {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Integer getIsDelete() {
+        return isDelete;
+    }
+
+    public void setIsDelete(Integer isDelete) {
+        this.isDelete = isDelete;
     }
 }

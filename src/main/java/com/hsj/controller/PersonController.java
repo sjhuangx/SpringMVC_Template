@@ -3,10 +3,7 @@ package com.hsj.controller;
 import com.hsj.model.Person;
 import com.hsj.service.PersonService;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
@@ -23,5 +20,23 @@ public class PersonController {
     @RequestMapping(value = "/person/{id}", method = RequestMethod.GET)
     public Person getPerson(@PathVariable("id") Integer id) {
         return personService.getPersonById(id);
+    }
+
+    @RequestMapping(value = "/person", method = RequestMethod.POST)
+    public Person insertPerson(@RequestParam Person person) {
+        personService.insert(person);
+        return personService.getPersonByName(person.getName());
+    }
+
+    @RequestMapping(value = "/person/{id}", method = RequestMethod.PUT)
+    public Person updatePersonById(@PathVariable("id") Integer id,
+                                   @RequestParam Person person) {
+        personService.update(person);
+        return personService.getPersonById(id);
+    }
+
+    @RequestMapping(value = "/person/{id}", method = RequestMethod.DELETE)
+    public int deletePersonById(@PathVariable("id") Integer id) {
+        return personService.deleteById(id);
     }
 }
